@@ -28,7 +28,7 @@ func main() {
 
 func initApp() error {
 	//setup ENV
-	err := LoadENV()
+	err := loadENV()
 	if err != nil {
 		return err
 	}
@@ -41,7 +41,7 @@ func initApp() error {
 	return nil
 }
 
-func LoadENV() error {
+func loadENV() error {
 	goEnv := os.Getenv("GO_ENV")
 	if goEnv == "" {
 		err := godotenv.Load()
