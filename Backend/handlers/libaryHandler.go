@@ -10,8 +10,9 @@ import (
 )
 
 type libaryDTO struct {
-	Name  string `json:"name" bson:"name" validate:"required"`
-	Album string `json:"album" bson:"album" validate:"required"`
+	Name  string   `json:"name" bson:"name" validate:"required"`
+	Album string   `json:"album" bson:"album" validate:"required"`
+	Empty []string `json:"empty" bson:"songs"`
 }
 
 // GET
@@ -36,6 +37,7 @@ func CreateLibary(c *fiber.Ctx) error {
 		return err
 	}
 
+	nLibary.Empty = make([]string, 0)
 	libaryCollection := database.GetCollection("libaries")
 	insertOneResult, err := libaryCollection.InsertOne(context.TODO(), nLibary)
 	if err != nil {
