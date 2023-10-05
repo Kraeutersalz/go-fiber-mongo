@@ -2,6 +2,7 @@ package database
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 
@@ -34,4 +35,5 @@ func CloseMongoDB() {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Connection to MongoDB closed.")
 }
